@@ -8,7 +8,7 @@ MAINTAINER cms88168
 ENV REFRESHED_AT 2015-11-30
 
 RUN apt-get -qq update && \
-    apt-get install -q -y wget build-essential python-pip python-m2crypto m2crypto git&& \
+    apt-get install -q -y wget build-essential python-m2crypto git&& \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
