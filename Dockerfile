@@ -28,7 +28,7 @@ ENV SS_METHOD aes-256-cfb
 ENV SS_TIMEOUT 300
 ENV SS_PROTOCOL origin
 ENV SS_OBFS http_simple
-ENV SS_OBFSP 
+ENV SS_OBFSP ""
 
 RUN echo "{
     "server":"0.0.0.0",
@@ -41,7 +41,7 @@ RUN echo "{
     "method":"$SS_METHOD",
     "protocol":"$SS_PROTOCOL",
     "obfs":"$SS_OBFS",
-    "obfs_param":"$SS_OBFSP"
+    "obfs_param":$SS_OBFSP
     "fast_open": false,
     "workers": 1
 }" > /etc/shadowsocksr.json
