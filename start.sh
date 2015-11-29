@@ -5,5 +5,5 @@ echo " timeout: $SS_TIMEOUT  encryption method: $SS_METHOD "
 echo " Please remember the password!"
 echo "========================================================================"
 
-cd shadowsocks/shadowsocks
+cd ~/shadowsocks/shadowsocks
 python server.py -c /etc/shadowsocksr.json
