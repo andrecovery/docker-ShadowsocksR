@@ -17,7 +17,10 @@ RUN wget https://download.libsodium.org/libsodium/releases/LATEST.tar.gz && \
     tar zxf LATEST.tar.gz && \
     cd libsodium* && \
     ./configure && make -j2 && make install && \
-    ldconfig
+    ldconfig && \
+    cd .. && \
+    rm -rf LATEST.tar.gz && \
+    rm -rf libsodium*
 
 RUN cd ~ && \
     git clone -b manyuser https://github.com/breakwa11/shadowsocks.git
