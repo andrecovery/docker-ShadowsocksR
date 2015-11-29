@@ -30,7 +30,7 @@ ENV SS_PROTOCOL origin
 ENV SS_OBFS http_simple
 ENV SS_OBFSP ""
 
-RUN echo "{
+RUN echo '{
     "server":"0.0.0.0",
     "server_ipv6": "::",
     "server_port":$SS_SERVER_PORT,
@@ -44,7 +44,7 @@ RUN echo "{
     "obfs_param":$SS_OBFSP
     "fast_open": false,
     "workers": 1
-}" > /etc/shadowsocksr.json
+}' > /etc/shadowsocksr.json
 
 ADD start.sh /usr/local/bin/start.sh
 RUN chmod 755 /usr/local/bin/start.sh
