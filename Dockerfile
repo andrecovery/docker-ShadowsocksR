@@ -1,6 +1,6 @@
 # About ShadowsocksR of Docker
 # 
-# Version:1.0
+# Version:1.1
 
 FROM ubuntu:14.04
 MAINTAINER cms88168 "cms88168@outlook.com"
@@ -39,6 +39,7 @@ ADD start.sh /usr/local/bin/start.sh
 RUN chmod 755 /usr/local/bin/start.sh
 
 EXPOSE $SS_SERVER_PORT
-#EXPOSE $SS_SERVER_PORT/udp
+EXPOSE $SS_SERVER_PORT/tcp
+EXPOSE $SS_SERVER_PORT/udp
 
 CMD ["sh", "-c", "start.sh"]
