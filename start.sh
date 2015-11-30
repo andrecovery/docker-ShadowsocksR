@@ -6,4 +6,4 @@ echo " Please remember the password!"
 echo "========================================================================"
 
 cd ~/shadowsocks/shadowsocks
-python server.py -c /etc/shadowsocksr.json
+python server.py -c ~/shadowsocksr.json
