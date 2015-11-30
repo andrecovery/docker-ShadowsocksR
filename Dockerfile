@@ -33,7 +33,7 @@ ENV SS_PROTOCOL origin
 ENV SS_OBFS http_simple_compatible
 ENV SS_OBFSP "baidu.com"
 
-VOLUME ["~/"]
+VOLUME ["~/shadowsocks/shadowsocks"]
 
 ADD start.sh /usr/local/bin/start.sh
 RUN chmod 755 /usr/local/bin/start.sh
