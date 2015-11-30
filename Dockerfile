@@ -31,7 +31,7 @@ ENV SS_METHOD aes-256-cfb
 ENV SS_TIMEOUT 300
 ENV SS_PROTOCOL origin
 ENV SS_OBFS http_simple_compatible
-ENV SS_OBFSP "baidu.com"
+ENV SS_OBFSP \"baidu.com\"
 
 VOLUME ["~/shadowsocks/shadowsocks"]
 
