@@ -38,7 +38,7 @@ VOLUME ["~/shadowsocks/shadowsocks"]
 ADD start.sh /usr/local/bin/start.sh
 RUN chmod 755 /usr/local/bin/start.sh
 
-EXPOSE $SS_SERVER_PORT/tcp
-EXPOSE $SS_SERVER_PORT/udp
+EXPOSE $SS_SERVER_PORT
+#EXPOSE $SS_SERVER_PORT/udp
 
 CMD ["sh", "-c", "start.sh"]
