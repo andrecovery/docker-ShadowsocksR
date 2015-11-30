@@ -3,7 +3,7 @@
 # Version:1.0
 
 FROM ubuntu:14.04
-MAINTAINER cms88168
+MAINTAINER cms88168 "cms88168@outlook.com"
 
 ENV REFRESHED_AT 2015-11-30
 
@@ -33,7 +33,9 @@ ENV SS_PROTOCOL origin
 ENV SS_OBFS http_simple_compatible
 ENV SS_OBFSP "baidu.com"
 
-RUN echo '{"server":"0.0.0.0","server_ipv6": "::","server_port":$SS_SERVER_PORT,"local_address": "127.0.0.1","local_port":1080,"password":"$SS_PASSWORD","timeout":$SS_TIMEOUT,"method":"$SS_METHOD","protocol":"$SS_PROTOCOL","obfs":"$SS_OBFS","obfs_param":$SS_OBFSP,"fast_open": false,"workers": 1}' > /etc/shadowsocksr.json
+RUN echo '{"server":"0.0.0.0","server_ipv6": "::","server_port":$SS_SERVER_PORT,"local_address": "127.0.0.1","local_port":1080,"password":"$SS_PASSWORD","timeout":$SS_TIMEOUT,"method":"$SS_METHOD","protocol":"$SS_PROTOCOL","obfs":"$SS_OBFS","obfs_param":$SS_OBFSP,"fast_open": false,"workers": 1}' > ~/shadowsocksr.json
+
+VOLUME ["~/"]
 
 ADD start.sh /usr/local/bin/start.sh
 RUN chmod 755 /usr/local/bin/start.sh
@@ -41,4 +43,3 @@ RUN chmod 755 /usr/local/bin/start.sh
 EXPOSE $SS_SERVER_PORT
 
 CMD ["sh", "-c", "start.sh"]
-#ENTRYPOINT ["/usr/local/bin/python"]
