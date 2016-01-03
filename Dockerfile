@@ -29,9 +29,12 @@ ENV SS_SERVER_PORT 8388
 ENV SS_PASSWORD password
 ENV SS_METHOD aes-256-cfb
 ENV SS_TIMEOUT 300
-ENV SS_PROTOCOL origin
+ENV SS_PROTOCOL verify_deflate
+ENV SS_PROTOCOLP \"\"
 ENV SS_OBFS http_simple_compatible
 ENV SS_OBFSP \"baidu.com\"
+ENV SS_REDIRECT "www.cgam.tk/404.html"
+ENV SS_DNSIPV6 false
 
 VOLUME ["~/shadowsocks/shadowsocks"]
 
