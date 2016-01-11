@@ -19,10 +19,8 @@ if [ "${AUTHORIZED_KEYS}" != "**None**" ]; then
 fi
 
 if [ ! -f /.root_pw_set ]; then
-	/set_root_pw.sh
+	/./set_root_pw.sh
 fi
-
-/usr/sbin/sshd -D
 
 echo "========================================================================"
 echo " You can now connect to this ShadowSocksR server at port: $SS_SERVER_PORT "
@@ -35,4 +33,4 @@ cd ~/vpnserver
 ./vpnserver start
 cd ~/shadowsocks/shadowsocks
 echo '{"server":"0.0.0.0","server_ipv6":"::","server_port":'$SS_SERVER_PORT',"local_address":"127.0.0.1","local_port":1080,"password":"'$SS_PASSWORD'","timeout":'$SS_TIMEOUT',"method":"'$SS_METHOD'","protocol":"'$SS_PROTOCOL'","protocol_param":'$SS_PROTOCOLP',"obfs":"'$SS_OBFS'","obfs_param":'$SS_OBFSP',"redirect":'$SS_REDIRECT',"dns_ipv6":'$SS_DNSIPV6',"fast_open": false,"workers": 1}'>shadowsocksr.json
-python server.py -c shadowsocksr.json
+/usr/sbin/sshd -D && python server.py -c shadowsocksr.json
