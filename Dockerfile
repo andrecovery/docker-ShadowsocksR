@@ -42,15 +42,9 @@ ENV SS_DNSIPV6 false
 
 #add VPN
 RUN cd ~ && \
-    wget http://www.packetix-download.com/files/packetix/v4.19-9599-beta-2015.10.19-tree/Linux/PacketiX_VPN_Server/64bit_-_Intel_x64_or_AMD64/vpnserver-v4.19-9599-beta-2015.10.19-linux-x64-64bit.tar.gz && \
-    tar -zxvf vpnserver-v4.19-9599-beta-2015.10.19-linux-x64-64bit.tar.gz && \
-    rm -f vpnserver-v4.19-9599-beta-2015.10.19-linux-x64-64bit.tar.gz && \
-    cd vpnserver && \
+    git clone https://github.com/cms88168/SoftEtherVPN.git && \
+    cd SoftEtherVPN && \
     make i_read_and_agree_the_license_agreement
-
-ADD vpn_server.config ~/vpnserver/vpn_server.config
-
-VOLUME ["~/"]
 
 ADD set_root_pw.sh /set_root_pw.sh
 RUN chmod +x /*.sh

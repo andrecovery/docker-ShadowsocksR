@@ -33,6 +33,6 @@ echo '{"server":"0.0.0.0","server_ipv6":"::","server_port":'$SS_SERVER_PORT',"lo
 
 (sleep 2;/usr/sbin/sshd -D)&
 (sleep 1;python ~/shadowsocks/shadowsocks/server.py -c /shadowsocksr.json)&
-~/vpnserver/./vpnserver start
+~/SoftEtherVPN/./vpnserver start
 wait
 exit 0
