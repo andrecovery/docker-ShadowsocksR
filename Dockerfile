@@ -53,7 +53,6 @@ ADD vpn_server.config ~/vpnserver/vpn_server.config
 VOLUME ["~/"]
 
 ADD set_root_pw.sh /set_root_pw.sh
-ADD run.sh /run.sh
 RUN chmod +x /*.sh
 ADD start.sh /usr/local/bin/start.sh
 RUN chmod 755 /usr/local/bin/start.sh
