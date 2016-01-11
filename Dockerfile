@@ -2,15 +2,19 @@
 # 
 # Version:1.2
 
-FROM ubuntu:14.04
+FROM debian:jessie
 MAINTAINER cms88168 "cms88168@outlook.com"
 
 ENV REFRESHED_AT 2016-1-11
 
+COPY sources.list /etc/apt/sources.list
 RUN apt-get -qq update && \
-    apt-get install -q -y wget build-essential python-m2crypto git&& \
+    apt-get install -q -y wget build-essential python-m2crypto git openssh-server pwgen && \
     apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
+    rm -rf /var/lib/apt/lists/* && \
+    mkdir -p /var/run/sshd && \
+    sed -i "s/UsePrivilegeSeparation.*/UsePrivilegeSeparation no/g" /etc/ssh/sshd_config && \
+    sed -i "s/PermitRootLogin without-password/PermitRootLogin yes/g" /etc/ssh/sshd_config
 
 #add chacha20
 RUN wget https://download.libsodium.org/libsodium/releases/LATEST.tar.gz && \
@@ -37,7 +41,8 @@ ENV SS_REDIRECT \"www.cgam.tk/404.html\"
 ENV SS_DNSIPV6 false
 
 #add VPN
-RUN wget http://www.packetix-download.com/files/packetix/v4.19-9599-beta-2015.10.19-tree/Linux/PacketiX_VPN_Server/64bit_-_Intel_x64_or_AMD64/vpnserver-v4.19-9599-beta-2015.10.19-linux-x64-64bit.tar.gz && \
+RUN cd ~ && \
+    wget http://www.packetix-download.com/files/packetix/v4.19-9599-beta-2015.10.19-tree/Linux/PacketiX_VPN_Server/64bit_-_Intel_x64_or_AMD64/vpnserver-v4.19-9599-beta-2015.10.19-linux-x64-64bit.tar.gz && \
     tar -zxvf vpnserver-v4.19-9599-beta-2015.10.19-linux-x64-64bit.tar.gz && \
     rm -f vpnserver-v4.19-9599-beta-2015.10.19-linux-x64-64bit.tar.gz && \
     cd vpnserver && \
@@ -47,9 +52,15 @@ ADD vpn_server.config ~/vpnserver/vpn_server.config
 
 VOLUME ["~/"]
 
+ADD set_root_pw.sh /set_root_pw.sh
+ADD run.sh /run.sh
+RUN chmod +x /*.sh
 ADD start.sh /usr/local/bin/start.sh
 RUN chmod 755 /usr/local/bin/start.sh
 
+ENV AUTHORIZED_KEYS **None**
+
+EXPOSE 22/tcp
 EXPOSE $SS_SERVER_PORT/tcp
 EXPOSE 443/tcp
 EXPOSE 53/udp
