@@ -22,7 +22,7 @@ if [ ! -f /.root_pw_set ]; then
 	/set_root_pw.sh
 fi
 
-exec /usr/sbin/sshd -D
+/usr/sbin/sshd -D
 
 echo "========================================================================"
 echo " You can now connect to this ShadowSocksR server at port: $SS_SERVER_PORT "
