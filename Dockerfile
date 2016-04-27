@@ -37,7 +37,7 @@ ENV SS_PROTOCOL verify_deflate
 ENV SS_PROTOCOLP \"\"
 ENV SS_OBFS http_simple_compatible
 ENV SS_OBFSP \"baidu.com\"
-ENV SS_REDIRECT \"www.cgam.tk/404.html\"
+ENV SS_REDIRECT \"cmsg.cf/404.html\"
 ENV SS_DNSIPV6 false
 
 #add VPN
