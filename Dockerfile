@@ -11,6 +11,13 @@ COPY sources.list /etc/apt/sources.list
 RUN apt-get -qq update && \
     apt-get install -q -y wget build-essential python-m2crypto git openssh-server pwgen && \
     apt-get clean && \
+    mkdir /var/run/sshd  
+    echo 'root:rootroot' |chpasswd  
+    sed -ri 's/^PermitRootLogin\s+.*/PermitRootLogin yes/' /etc/ssh/sshd_config  
+    sed -ri 's/UsePAM yes/#UsePAM yes/g' /etc/ssh/sshd_config  
+    
+    
+    
     rm -rf /var/lib/apt/lists/* && \
     mkdir -p /var/run/sshd && \
     sed -i "s/UsePrivilegeSeparation.*/UsePrivilegeSeparation no/g" /etc/ssh/sshd_config && \
